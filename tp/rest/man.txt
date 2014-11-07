@@ -1,0 +1,57 @@
+Le but de ce tp est de manipuler diverses requetes HTTP. Pour ce faire nous
+utiliserons curl qui est un outil qui permet d'executer les requetes que l'on
+veut et de les voir passer. De plus un serveur devra répondre au requete, j'ai
+pour cela mis en place un petit service web qui simule la creation de fichiers
+et l'ajout de ligne de texte dans ces derniers.
+
+L'application est disponible à l'adresse suivante : 
+http://gf.axellink.fr/restcn/aireisti/rest/
+
+ce que l'on peut faire :
+
+GET http://gf.axellink.fr/restcn/aireisti/rest/ : renvoie la liste des
+	fichiers créés
+
+PUT http://gf.axellink.fr/restcn/aireisti/rest/fic : création du fichier
+	fic (si il existe, il sera remplacé par un nouveau vide)
+
+DELETE http://gf.axellink.fr/restcn/aireisti/rest/fic : Supprime le
+	fichier fic (erreur 404 si le fichier n'existe pas)
+
+GET http://gf.axellink.fr/restcn/aireisti/rest/fic : recupere le 
+	contenu du fichier fic (erreur 404 si le fichier n'existe pas)
+
+POST http://gf.axellink.fr/restcn/aireisti/rest/fic : avec une donnée
+	chaine de caractère, inscrit une nouvelle ligne contenant la chaine
+
+La simulation de fichier est en fait une map de liste de chaine de caractère,
+la liste contenant chaque ligne du fichier, et la map est indexée par les noms
+de fichiers.
+
+
+Utilisation de curl :
+
+RTFM !!! :)
+
+Se concentrer sur les options :
+ -v : affiche absolument tout ce que fait curl, et surtout les requêtes et
+      réponses.
+ -X : permet de spécifier la méthode (GET,DELETE,POST,PUT)
+ -d : permet d'ajouter de la donnée pour la méthode POST
+ -H : permet de spécifier un header, l'appli n'accepte que du text/plain
+      comme Content-Type, il faudra donc le spécifier dans le cadre du POST
+
+petit exemple pour créer un fichier test, insérer coucou et le supprimer
+
+# On cree le fichier
+curl -v -X PUT http://gf.axellink.fr/restcn/aireisti/rest/test
+# On verifie qu'il existe
+curl -v -X GET http://gf.axellink.fr/restcn/aireisti/rest/
+# on ajoute coucou
+curl -v -X POST http://gf.axellink.fr/restcn/aireisti/rest/test -d "coucou" -H "Content-Type: text/plain"
+# On regarde notre coucou
+curl -v -X GET http://gf.axellink.fr/restcn/aireisti/rest/test
+# On suppr le fichier
+curl -v -X DELETE http://gf.axellink.fr/restcn/aireisti/rest/test
+# On verifie
+curl -v -X GET http://gf.axellink.fr/restcn/aireisti/rest/
