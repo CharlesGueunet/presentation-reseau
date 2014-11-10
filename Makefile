@@ -13,7 +13,8 @@
 
 PDFOUTPUT = ./presentation.pdf
 ALLLATEX = $(shell find . -name "*.tex")
-LATEXOPTS = 
+LATEXOPTS = -halt-on-error
+GREPARGS = -A 3 "\(Warning\|Error\)"
 
 
 # Compilation du document
@@ -23,12 +24,10 @@ all: $(PDFOUTPUT) clean
 
 
 %.pdf: %.tex $(ALLLATEX)
-	latex $(LATEXOPTS) $<
+	pdflatex $(LATEXOPTS) $< | grep $(GREPARGS)
 	$(ifneq ("$(wildcard $(@:.tex=.bib))",""), bibtex $(<:.tex=.aux))
-	latex $(LATEXOPTS) $<
-	latex $(LATEXOPTS) $<
-	dvips $(<:.tex=.dvi) -o $(<:.tex=.ps)
-	ps2pdf $(<:.tex=.ps) $@
+	pdflatex -interaction=batchmode $(LATEXOPTS) $<
+	pdflatex -interaction=batchmode $(LATEXOPTS) $<
 
 
 clean:
