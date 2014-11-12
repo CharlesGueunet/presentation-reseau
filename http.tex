@@ -44,7 +44,9 @@
 
 \begin{frame}{Modèle \textbf{O}pen \textbf{S}ystem \textbf{I}nterconnection : \textbf{OSI}}
 
-	\includegraphics[scale=0.75]{img_http/OSI.jpg}
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{img_http/OSI.jpg}
+    \end{center}
 
 \end{frame}
 
@@ -60,10 +62,10 @@
 		{\Large \textbf{H}yper\textbf{T}ext \textbf{T}ransfert \textbf{P}rotocol}  \vspace{2em}
 
 		\begin{itemize}
-			\item Communication : Client <-> Serveur\\
+			\item Communication : Client $\leftrightarrow$ Serveur\\
 			\item Protocole de couche Application, fonctionne sur n'importe quelle connexion\\
 			\item Version sécurisée : HTTPS par SSL / TLS
-			\item Votre navigateur WEB est un client HTTP
+			\item Votre navigateur web est un client HTTP
 			\item Serveurs HTTP : Apache, IIS (Microsoft), NodeJS, GWS (Google)
 		\end{itemize}
 	\end{center}
@@ -102,11 +104,13 @@ V1.1 : Performances et supports améliorés.
 
 \begin{frame}{Comment ça marche ?}
 
-\begin{flushright}
-\textbf{\large Système de requêtes / réponses}. \vspace{1em}
-\end{flushright}
+\begin{center}
+\textbf{\large Système de requêtes / réponses}.
+
+\vspace{1em}
 
 \includegraphics[scale=0.75]{img_http/schema_http.jpg}
+\end{center}
 
 \end{frame}
 
@@ -116,7 +120,9 @@ V1.1 : Performances et supports améliorés.
 
 \begin{frame}{Comment faire une requête ?}
 	
-\includegraphics[scale=0.6]{img_http/requete.jpg}
+    \begin{center}
+        \includegraphics[width=1\textwidth]{img_http/requete.jpg}
+    \end{center}
 
 \end{frame}
 
@@ -147,19 +153,19 @@ Liste des méthodes les plus connues :
 \begin{frame}{En-têtes}
 
 \begin{table}[h]
-\begin{tabular}{|l|l|}
+    \begin{tabular}{|l|p{0.65\textwidth}|}
 \hline
    En-tête & Description\\ \hline \hline
    \textbf{Host} & Nom de domaine du site Web\\ \hline
    \textbf{User-Agent} & Application envoyant la requête\\ \hline
-   \textbf{Accept} & Type de contenu accepté par l'application cliente\\ \hline
+   \textbf{Accept} & Type de contenu accepté par le client\\ \hline
    \textbf{Accept-Charset} & Jeux de caractères supportés par le client\\ \hline
    \textbf{Content-Encoding} & Type de codage de la requête\\ \hline
    \textbf{Content-Length} & Taille du corps de la requête\\ \hline
    \textbf{Content-Type} & Type de contenu du corps de la requête\\ \hline
    \textbf{Connection} & Indique si les connexions sont persistantes\\ \hline
    \textbf{Date} & Date de début de transfert des données\\ \hline   
-   \textbf{Refer} & Page actuelle affichée sur l'application cliente\\ \hline
+   \textbf{Refer} & Page actuelle affichée sur le client\\ \hline
    \textbf{Cookie} & Nom et valeurs des cookies associés\\ \hline
 \end{tabular}
 \end{table}
@@ -170,7 +176,9 @@ Liste des méthodes les plus connues :
 
 \begin{frame}{Et maintenant une réponse ?}
 	
-\includegraphics[scale=0.6]{img_http/reponse.jpg}
+    \begin{center}
+        \includegraphics[width=1\textwidth]{img_http/reponse.jpg}
+    \end{center}
 
 \end{frame}
 
